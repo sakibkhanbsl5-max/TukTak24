@@ -22,7 +22,7 @@
 <div class="modal" id="cartModal"><div class="panel"><div class="rowbtn" style="justify-content:space-between"><h2>আপনার কার্ট</h2><button class="ghost" onclick="closeModal('cartModal')">✕</button></div><div id="cartItems"></div><button class="primary" onclick="checkout()">WhatsApp-এ অর্ডার করুন</button></div></div>
 <script>
 const WA='8801516598174';
-const productData={id:1790601,name:'HAVIT TW906 PRO – True Wireless Earbuds',price:1700,oldPrice:2000,cat:'ইলেকট্রনিক্স',image:'',code:'TT-AUD-001',desc:'Active Noise Cancellation (ANC), 4-Mic ENC ক্লিয়ার কলিং, Bluetooth 5.3, Powerful Stereo Sound, Type-C Charging এবং ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক।'};
+const productData={id:1790601,name:'HAVIT TW906 PRO – True Wireless Earbuds',price:1700,oldPrice:2000,cat:'ইলেকট্রনিক্স',image:'havit-tw906-pro-1.jpg',code:'TT-AUD-001',desc:'Active Noise Cancellation (ANC), 4-Mic ENC ক্লিয়ার কলিং, Bluetooth 5.3, Powerful Stereo Sound, Type-C Charging এবং ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক।'};
 let products=[];
 try{products=JSON.parse(localStorage.getItem('tt_products')||'[]');if(!Array.isArray(products))products=[];}catch(e){products=[];}
 products=products.filter(p=>!String(p.name||'').toUpperCase().includes('HAVIT TW906 PRO'));
