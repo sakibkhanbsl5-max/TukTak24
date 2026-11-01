@@ -498,11 +498,27 @@ main{max-width:1240px!important;padding:0 24px!important;margin:34px auto!import
  .cat .cat-icon{width:26px!important;height:26px!important;flex-basis:26px!important;font-size:20px!important}
 }
 
+
+/* Keep only the corner cart; use a centered homepage label in the second row */
+.homepage-label{
+ grid-column:2;grid-row:2;justify-self:center;align-self:center;
+ color:#171717;font-family:Georgia,"Times New Roman",serif;
+ font-size:21px;font-weight:900;letter-spacing:2.8px;
+ text-transform:uppercase;padding:10px 18px;
+ border-bottom:3px solid #ff6500;
+ text-shadow:0 1px 0 #ffffff;
+}
+@media(max-width:760px){
+ .homepage-label{grid-column:2!important;grid-row:2!important;
+  width:100%;text-align:center;font-size:18px;letter-spacing:2.4px;
+  padding:8px 5px;border-bottom-width:3px}
+}
+
 </style>
 </head>
 <body>
 <div class="top"><div class="top-inner"><span class="top-main-text">পছন্দের সবকিছু এক ঠিকানায় 🛒</span><span class="top-sub-text">আপনার বিশ্বস্ত সঙ্গী — TukTak24.Com</span></div></div>
-<header class="head"><div class="nav"><button class="menu-toggle" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" aria-label="ক্যাটাগরি">☰</button><a class="logo" href="#" aria-label="TukTak24 home"><img src="assets/tuktak24-logo.jpg" alt="TukTak24" class="brand-logo"></a><div class="search"><span class="search-icon">⌕</span><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="top-cart-icon" onclick="showCart()" aria-label="কার্ট">🛒</button><button class="ghost cart-button" onclick="showCart()">🛒 <span>কার্ট</span> <b id="cartCount">0</b></button><button class="ghost admin-button" onclick="openLogin()">♟ Admin</button></div></header>
+<header class="head"><div class="nav"><button class="menu-toggle" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" aria-label="ক্যাটাগরি">☰</button><a class="logo" href="#" aria-label="TukTak24 home"><img src="assets/tuktak24-logo.jpg" alt="TukTak24" class="brand-logo"></a><div class="search"><span class="search-icon">⌕</span><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="top-cart-icon" onclick="showCart()" aria-label="কার্ট">🛒</button><div class="homepage-label" aria-label="Homepage">HOMEPAGE</div><button class="ghost admin-button" onclick="openLogin()">♟ Admin</button></div></header>
 <div class="adminbar" id="adminbar">অ্যাডমিন মোড চালু <button class="primary" onclick="openDashboard()">📊 অর্ডার ড্যাশবোর্ড</button><button class="primary" onclick="openProduct()">＋ পণ্য যোগ</button><button class="ghost" onclick="openManage()">পণ্য পরিচালনা</button><button class="ghost" onclick="logout()">লগআউট</button></div>
 <section class="hero"><div class="hero-copy"><span class="pill">✦ WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button></div><div class="hero-visual" aria-hidden="true"><div class="bag-handle"></div><div class="bag-body"><div class="bag-brand">TukTak<span>24</span></div><div class="bag-lines"></div></div><div class="gift gift-one">🎁</div><div class="gift gift-two">🎁</div><div class="sparkle">✦</div></div></section>
 <main><div class="section-title category-heading"><h2>ক্যাটাগরি</h2><a href="#products">সব দেখুন <span>→</span></a></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)"><span class="cat-icon" aria-hidden="true">🛍️</span> সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)"><span class="cat-icon" aria-hidden="true">🔌</span> ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)"><span class="cat-icon" aria-hidden="true">👕</span> ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)"><span class="cat-icon" aria-hidden="true">🏠</span> হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)"><span class="cat-icon" aria-hidden="true">✨</span> অন্যান্য</button></div>
