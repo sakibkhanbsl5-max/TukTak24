@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 190" role="img" aria-labelledby="title">
+<title id="title">TukTak24</title>
+<g fill="none" stroke="#111" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+<path d="M83 42c5-42 70-42 78 0"/><path d="M105 42h34"/>
+<path d="M72 49h-24l-15 22M173 49h24l15 22"/>
+</g>
+<path d="M50 72h174l-17 25H32z" fill="#ff6500"/>
+<path d="M80 72h35l-18 25H62zM125 72h34l-2 25h-36zM169 72h35l17 25h-36z" fill="#111"/>
+<text x="22" y="151" font-family="Arial,Helvetica,sans-serif" font-size="104" font-style="italic" font-weight="900" letter-spacing="-7" fill="#ff6500">T</text>
+<text x="104" y="151" font-family="Arial,Helvetica,sans-serif" font-size="96" font-style="italic" font-weight="900" letter-spacing="-6" fill="#111">ukTak</text>
+<text x="408" y="151" font-family="Arial,Helvetica,sans-serif" font-size="96" font-style="italic" font-weight="900" letter-spacing="-6" fill="#111">24</text>
+<path d="M410 23a80 80 0 0 1 154 24" fill="none" stroke="#ff6500" stroke-width="13" stroke-linecap="round"/>
+<path d="M553 62l38-11-24 23 30-4" fill="none" stroke="#ff6500" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M290 166h135l-15 16H275" fill="none" stroke="#ff6500" stroke-width="9" stroke-linecap="round"/>
+<path d="M470 151h102l-13 30h-75z" fill="none" stroke="#111" stroke-width="10" stroke-linejoin="round"/>
+<path d="M486 163h65M482 174h58" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+<circle cx="491" cy="187" r="7" fill="#ff6500"/><circle cx="550" cy="187" r="7" fill="#ff6500"/>
+</svg>
