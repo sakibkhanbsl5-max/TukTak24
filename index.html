@@ -22,7 +22,7 @@
 <div class="modal" id="cartModal"><div class="panel"><div class="rowbtn" style="justify-content:space-between"><h2>আপনার কার্ট</h2><button class="ghost" onclick="closeModal('cartModal')">✕</button></div><div id="cartItems"></div><button class="primary" onclick="checkout()">WhatsApp-এ অর্ডার করুন</button></div></div>
 <script>
 const WA='8801516598174';
-const productData={id:1790601,name:'HAVIT TW906 PRO – True Wireless Earbuds',price:1700,oldPrice:2000,cat:'ইলেকট্রনিক্স',image:'havit-tw906-pro-1.jpg',code:'TT-AUD-001',desc:'Active Noise Cancellation (ANC), 4-Mic ENC ক্লিয়ার কলিং, Bluetooth 5.3, Powerful Stereo Sound, Type-C Charging এবং ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক।'};
+const productData={id:1790601,name:'HAVIT TW906 PRO – True Wireless Earbuds',price:1700,oldPrice:2000,cat:'ইলেকট্রনিক্স',image:'https://sakibkhanbsl5-max.github.io/TukTak24/havit-tw906-pro-1.jpg',code:'TT-AUD-001',desc:'Active Noise Cancellation (ANC), 4-Mic ENC ক্লিয়ার কলিং, Bluetooth 5.3, Powerful Stereo Sound, Type-C Charging এবং ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক।'};
 let products=[];
 try{products=JSON.parse(localStorage.getItem('tt_products')||'[]');if(!Array.isArray(products))products=[];}catch(e){products=[];}
 products=products.filter(p=>!String(p.name||'').toUpperCase().includes('HAVIT TW906 PRO'));
@@ -42,7 +42,7 @@ function render(){
 }
 function openDetails(id){
  const p=products.find(function(x){return Number(x.id)===Number(id);});if(!p)return;
- document.getElementById('detailContent').innerHTML='<div class="photo" style="height:230px;border-radius:12px;margin-bottom:14px">🎧</div><h3>'+esc(p.name)+'</h3><p><b>পণ্য কোড:</b> '+esc(p.code||'TT-AUD-001')+'</p><p class="price">৳ '+Number(p.price).toLocaleString('en-BD')+(p.oldPrice?'<span class="old">৳ '+Number(p.oldPrice).toLocaleString('en-BD')+'</span>':'')+'</p>'+(p.oldPrice?'<p class="save">আপনি সেভ করছেন ৳ '+(p.oldPrice-p.price)+' টাকা</p>':'')+'<p>'+esc(p.desc)+'</p><h3>ফিচারসমূহ</h3><ul><li>Active Noise Cancellation (ANC)</li><li>4-Mic ENC – ক্লিয়ার কলিং</li><li>Bluetooth 5.3</li><li>Powerful Stereo Sound</li><li>Type-C Charging</li><li>ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক</li></ul><p>সারা বাংলাদেশে হোম ডেলিভারি সুবিধা।</p>';
+ document.getElementById('detailContent').innerHTML='<div class="photo" style="height:230px;border-radius:12px;margin-bottom:14px"><img src="'+esc(p.image||'https://sakibkhanbsl5-max.github.io/TukTak24/havit-tw906-pro-1.jpg')+'" alt="'+esc(p.name)+'"></div><h3>'+esc(p.name)+'</h3><p><b>পণ্য কোড:</b> '+esc(p.code||'TT-AUD-001')+'</p><p class="price">৳ '+Number(p.price).toLocaleString('en-BD')+(p.oldPrice?'<span class="old">৳ '+Number(p.oldPrice).toLocaleString('en-BD')+'</span>':'')+'</p>'+(p.oldPrice?'<p class="save">আপনি সেভ করছেন ৳ '+(p.oldPrice-p.price)+' টাকা</p>':'')+'<p>'+esc(p.desc)+'</p><h3>ফিচারসমূহ</h3><ul><li>Active Noise Cancellation (ANC)</li><li>4-Mic ENC – ক্লিয়ার কলিং</li><li>Bluetooth 5.3</li><li>Powerful Stereo Sound</li><li>Type-C Charging</li><li>ANC বন্ধ থাকলে প্রায় ২০ ঘণ্টা পর্যন্ত প্লেব্যাক</li></ul><p>সারা বাংলাদেশে হোম ডেলিভারি সুবিধা।</p>';
  document.getElementById('detailOrderBtn').onclick=function(){const msg='আমি '+p.name+' অর্ডার করতে চাই।\nপণ্য কোড: '+(p.code||'TT-AUD-001')+'\nদাম: ৳'+p.price;window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');};
  document.getElementById('detailsModal').classList.add('show');document.body.classList.add('modal-open');
 }
