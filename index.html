@@ -165,13 +165,27 @@ a.feature:hover{transform:translateY(-3px);box-shadow:0 12px 28px #17171712}
  .save{font-size:12px}
  .panel{padding:18px}
 }
+
+/* Cover-photo style homepage banner */
+.hero{max-width:1200px;min-height:300px;margin:24px auto 34px;padding:42px 48px;border:0;border-radius:22px;background:radial-gradient(circle at 82% 18%,#ff7a1a55 0,transparent 28%),linear-gradient(112deg,#111 0%,#242424 52%,#f45100 100%);color:#fff;box-shadow:0 18px 42px #17171720;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(130deg,transparent 0 68%,#ffffff0c 68% 69%,transparent 69%);pointer-events:none}
+.hero:after{content:"";position:absolute;right:17%;bottom:-125px;width:260px;height:260px;border:1px solid #ffffff20;border-radius:50%;box-shadow:0 0 0 24px #ffffff08,0 0 0 50px #ffffff06;pointer-events:none}
+.hero-copy{max-width:690px;width:62%;z-index:1}
+.hero .pill{color:#ffb477;background:#ffffff12;border:1px solid #ffffff30}
+.hero h1{color:#fff}
+.hero h1 span{color:#ff8a24}
+.hero p{color:#f1e8e2}
+.hero .primary{background:linear-gradient(135deg,#ff8a24,#f45100);color:#fff}
+.hero-visual{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex:0 0 32%;width:32%;min-height:175px;padding:12px;background:#fff;border:1px solid #ffffff99;border-radius:20px;box-shadow:0 16px 35px #0003;transform:rotate(1deg)}
+.hero-visual img{display:block;width:100%;height:100%;max-height:185px;object-fit:contain;border-radius:12px}
+@media(max-width:600px){.hero{margin:14px 12px 28px;padding:25px 20px;min-height:0;border-radius:19px;display:flex;flex-direction:column;align-items:stretch;gap:18px}.hero-copy{width:100%;max-width:100%}.hero h1{font-size:32px}.hero p{font-size:14px;line-height:1.8}.hero-visual{width:100%;flex:0 0 auto;min-height:110px;max-height:125px;padding:5px;border-radius:14px;transform:none}.hero-visual img{max-height:112px}.hero:after{right:-70px;bottom:-150px}}
 </style>
 </head>
 <body>
 <div class="top">পছন্দের সবকিছু এক ঠিকানায় 🛒<br><span>আপনার বিশ্বস্ত সঙ্গী — TukTak24</span></div>
 <header class="head"><div class="nav"><a class="logo" href="#" aria-label="TukTak24 home"><img src="assets/tuktak24-logo.jpg" alt="TukTak24" class="brand-logo"></a><div class="search"><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="ghost" onclick="showCart()">🛒 কার্ট <span id="cartCount">0</span></button><button class="ghost" onclick="openLogin()">Admin</button></div></header>
 <div class="adminbar" id="adminbar">অ্যাডমিন মোড চালু <button class="primary" onclick="openDashboard()">📊 অর্ডার ড্যাশবোর্ড</button><button class="primary" onclick="openProduct()">＋ পণ্য যোগ</button><button class="ghost" onclick="openManage()">পণ্য পরিচালনা</button><button class="ghost" onclick="logout()">লগআউট</button></div>
-<section class="hero"><div class="hero-copy"><span class="pill">WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button></div><div class="hero-visual" aria-hidden="true"><div class="hero-bag">🛍️</div><div class="hero-sticker">TukTak24</div></div></section>
+<section class="hero"><div class="hero-copy"><span class="pill">WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button></div><div class="hero-visual"><img src="assets/tuktak24-logo.jpg" alt="TukTak24 লোগো"></div></section>
 <main><div class="section-title"><h2>ক্যাটাগরি</h2></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)">সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)">ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)">ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)">হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)">অন্যান্য</button></div>
 <div class="section-title" id="products"><h2>জনপ্রিয় পণ্য</h2><small id="productCount"></small></div><div class="grid" id="grid"></div>
 <div class="features"><div class="feature">🚚<strong>ক্যাশ অন ডেলিভারি</strong><small>পণ্য হাতে পেয়ে মূল্য পরিশোধ করুন</small></div><a class="feature" href="https://wa.me/8801938289730?text=আসসালামু%20আলাইকুম%2C%20TukTak24%20থেকে%20অর্ডার%20করতে%20চাই।" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">💬<strong>WhatsApp অর্ডার</strong><small>সরাসরি কথা বলে অর্ডার করুন</small></a><a class="feature" href="https://wa.me/8801938289730?text=আসসালামু%20আলাইকুম%2C%20TukTak24%20সম্পর্কে%20জানতে%20চাই।" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">🔒<strong>বিশ্বস্ত কেনাকাটা</strong><small>সাপোর্টের জন্য আমাদের সাথে যোগাযোগ</small></a></div></main>
