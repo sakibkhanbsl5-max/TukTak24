@@ -66,6 +66,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .logo{display:flex;align-items:center;gap:9px;font-size:27px;letter-spacing:-1.2px;font-weight:950;color:#151515}
 .logo b{color:#ff6500}
 .logo-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:#ff6500;color:#fff;font-size:25px;font-weight:950;box-shadow:0 5px 13px #ff650044}
+.brand-logo{display:block;width:174px;height:auto;max-height:58px;object-fit:contain}
+@media(max-width:560px){.brand-logo{width:148px;max-height:48px}}
 .search{background:#f7f7f7;border:1px solid #e9e9e9;border-radius:14px}
 .search:focus-within{border-color:#ff6500;box-shadow:0 0 0 4px #ff650018}
 .search input{padding:13px 15px}
@@ -167,7 +169,7 @@ a.feature:hover{transform:translateY(-3px);box-shadow:0 12px 28px #17171712}
 </head>
 <body>
 <div class="top">পছন্দের সবকিছু এক ঠিকানায় 🛒<br><span>আপনার বিশ্বস্ত সঙ্গী — TukTak24</span></div>
-<header class="head"><div class="nav"><a class="logo" href="#" aria-label="TukTak24 home"><span class="logo-mark">T</span><span>TukTak<b>24</b></span></a><div class="search"><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="ghost" onclick="showCart()">🛒 কার্ট <span id="cartCount">0</span></button><button class="ghost" onclick="openLogin()">Admin</button></div></header>
+<header class="head"><div class="nav"><a class="logo" href="#" aria-label="TukTak24 home"><img src="assets/tuktak24-logo.svg" alt="TukTak24" class="brand-logo"></a><div class="search"><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="ghost" onclick="showCart()">🛒 কার্ট <span id="cartCount">0</span></button><button class="ghost" onclick="openLogin()">Admin</button></div></header>
 <div class="adminbar" id="adminbar">অ্যাডমিন মোড চালু <button class="primary" onclick="openDashboard()">📊 অর্ডার ড্যাশবোর্ড</button><button class="primary" onclick="openProduct()">＋ পণ্য যোগ</button><button class="ghost" onclick="openManage()">পণ্য পরিচালনা</button><button class="ghost" onclick="logout()">লগআউট</button></div>
 <section class="hero"><div class="hero-copy"><span class="pill">WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button></div><div class="hero-visual" aria-hidden="true"><div class="hero-bag">🛍️</div><div class="hero-sticker">TukTak24</div></div></section>
 <main><div class="section-title"><h2>ক্যাটাগরি</h2></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)">সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)">ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)">ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)">হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)">অন্যান্য</button></div>
