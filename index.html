@@ -33,6 +33,6 @@ function editProduct(id){let p=products.find(x=>x.id===id);if(!p)return;document
 function deleteProduct(id){if(confirm('পণ্যটি মুছে ফেলবেন?')){products=products.filter(p=>p.id!==id);persist();render()}}
 function addCart(id){let p=products.find(x=>x.id===id);if(p)cart.push(p);document.getElementById('cartCount').textContent=cart.length}
 function showCart(){document.getElementById('cartItems').innerHTML=cart.length?cart.map(p=>'<p>'+esc(p.name)+' — ৳'+Number(p.price).toLocaleString('en-BD')+'</p>').join(''):'<p>কার্ট খালি।</p>';document.getElementById('cartModal').classList.add('show')}
-function checkout(){if(!cart.length){alert('কার্ট খালি');return}const lines=cart.map(p=>'পণ্য কোড: '+(p.code||('TT-'+String(p.id).slice(-6)))+' | '+p.name+' — ৳'+p.price);const msg='TukTak24 অর্ডার:\n'+lines.join('\n')+'\nমোট: ৳'+cart.reduce((s,p)=>s+Number(p.price),0);window.open('https://wa.me/8801516598174?text='+encodeURIComponent(msg),'_blank')}
+function checkout(){if(!cart.length){alert('কার্ট খালি');return}const lines=cart.map(p=>'পণ্য কোড: '+(p.code||'TT-AUD-001')+' | '+p.name+' — ৳'+p.price);const msg='TukTak24 অর্ডার:\\n'+lines.join('\\n')+'\\nমোট: ৳'+cart.reduce((s,p)=>s+Number(p.price),0);window.open('https://wa.me/8801516598174?text='+encodeURIComponent(msg),'_blank')}
 document.getElementById('search').addEventListener('input',render);document.querySelector('.logo').addEventListener('contextmenu',e=>{e.preventDefault();openLogin()});render();
 </script></body></html>
