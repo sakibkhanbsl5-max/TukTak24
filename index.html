@@ -650,6 +650,17 @@ body{background:#fafafa;color:#242424}
 .category-drawer-foot{margin-top:auto;padding:18px 4px 0;color:#999;font-size:11px;border-top:1px solid #eee}
 body.category-drawer-open{overflow:hidden}
 @media(min-width:761px){.category-drawer{width:360px}}
+
+/* Desktop product layout: four cards per row with edge-to-edge image frames.
+   Existing category labels, order and mobile layout remain unchanged. */
+@media (min-width: 761px){
+  main{max-width:1320px!important;padding-left:24px!important;padding-right:24px!important}
+  #grid.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px!important}
+  #grid .product{min-width:0!important}
+  #grid .photo{width:100%!important;height:auto!important;aspect-ratio:1/1!important;padding:0!important;margin:0!important;overflow:hidden!important;background:#fff!important}
+  #grid .photo img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-width:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center!important}
+}
+
 </style>
 </head>
 <body>
