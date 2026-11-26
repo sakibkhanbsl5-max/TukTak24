@@ -667,8 +667,8 @@ async function saveCustomerEdit(event){
  const $=id=>document.getElementById(id),msg=$('customerEditMsg'),btn=$('saveCustomerEditBtn');
   const modal=$('customerEditModal'),target=customerCache.find(x=>String(x.id)===String(modal?.dataset.customerId));
  if(!target){msg.textContent='কাস্টমার রেকর্ড পাওয়া যায়নি। রিফ্রেশ করে আবার চেষ্টা করুন।';return;}
- const name=$('editCustomerName').value.trim(),phone=$('editCustomerPhone').value.trim().replace(/[\\s()-]/g,'');
- if(!name||!/^(?:\\+?88)?01[3-9][0-9]{8}$/.test(phone)){msg.textContent='নাম ও সঠিক বাংলাদেশি ১১ সংখ্যার মোবাইল নম্বর দিন।';return;}
+ const name=$('editCustomerName').value.trim(),phone=$('editCustomerPhone').value.trim().replace(/[\s()-]/g,'');
+ if(!name||!/^(?:\+?88)?01[3-9][0-9]{8}$/.test(phone)){msg.textContent='নাম ও সঠিক বাংলাদেশি ১১ সংখ্যার মোবাইল নম্বর দিন।';return;}
  const normalized=phone.startsWith('+880')?'0'+phone.slice(4):phone.startsWith('880')?'0'+phone.slice(3):phone;
  btn.disabled=true;msg.textContent='সংরক্ষণ হচ্ছে…';
  try{
