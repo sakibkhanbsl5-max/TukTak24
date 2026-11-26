@@ -594,12 +594,48 @@ body{background:#fafafa;color:#242424}
  .nav .reseller-nav-button,.nav .admin-button{font-size:12px!important}
 }
 
+
+/* Admin dashboard: clean responsive control panel */
+.adminbar{display:none!important;background:#f7f7f7!important;border:0!important;border-top:1px solid #ededed!important;border-bottom:1px solid #ededed!important;padding:22px max(18px,calc((100% - 1120px)/2)) 26px!important;color:#171717!important;text-align:left!important}
+.adminbar.show{display:block!important}
+.adminbar-heading{max-width:1120px;margin:0 auto 16px;display:flex;flex-direction:column;gap:4px}
+.adminbar-kicker{font:800 10px/1.4 system-ui,sans-serif;letter-spacing:1.8px;color:#f06416}
+.adminbar-heading strong{font-size:22px;line-height:1.35;font-weight:900;color:#171717}
+.adminbar-heading small{font-size:12px;color:#777;line-height:1.6}
+.adminbar-actions{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.adminbar-actions button{margin:0!important;min-width:0;min-height:54px;padding:12px 15px!important;border-radius:13px!important;display:flex;align-items:center;justify-content:flex-start;gap:10px;text-align:left;font-size:14px;line-height:1.35;box-shadow:0 3px 10px #1111110a}
+.adminbar-actions button.primary{background:#242424!important;color:#fff!important;box-shadow:0 4px 12px #11111112!important}
+.adminbar-actions button.ghost{background:#fff!important;color:#222!important;border:1px solid #e5e5e5!important}
+.adminbar-actions button:hover{transform:translateY(-1px);box-shadow:0 7px 16px #11111112!important}
+.admin-action-icon{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#ffffff1c;color:#ff8a3d;font-size:19px;font-weight:900}
+.adminbar-actions .ghost .admin-action-icon{background:#fff0e7;color:#ed5b0b}
+.admin-action-arrow{margin-left:auto;font-size:22px;opacity:.8}
+.adminbar-actions .admin-dashboard-btn{grid-column:span 2;background:linear-gradient(100deg,#242424,#383838)!important}
+.adminbar-actions .admin-logout-btn{grid-column:span 3;min-height:44px;justify-content:center;background:#fff!important;color:#555!important}
+.adminbar-actions .admin-logout-btn .admin-action-icon{background:#f2f2f2;color:#777}
+.pending-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:20px;background:#ff6500;color:#fff;font-size:11px;font-weight:900}
+@media(max-width:760px){
+ .adminbar{padding:17px 14px 20px!important}
+ .adminbar-heading{margin-bottom:13px}
+ .adminbar-heading strong{font-size:20px}
+ .adminbar-heading small{font-size:11px}
+ .adminbar-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .adminbar-actions button{min-height:58px;padding:10px 11px!important;gap:8px;font-size:13px!important;border-radius:12px!important}
+ .adminbar-actions .admin-dashboard-btn{grid-column:span 2}
+ .adminbar-actions .admin-logout-btn{grid-column:span 2;min-height:46px}
+ .admin-action-icon{flex-basis:27px;width:27px;height:27px;font-size:17px}
+}
+@media(max-width:360px){
+ .adminbar-actions{gap:7px}
+ .adminbar-actions button{font-size:12px!important;padding:9px 8px!important}
+ .admin-action-icon{flex-basis:24px;width:24px;height:24px}
+}
 </style>
 </head>
 <body>
 <div class="top"><div class="top-inner"><span class="top-main-text">পছন্দের সবকিছু এক ঠিকানায় 🛒</span><span class="top-sub-text">আপনার বিশ্বস্ত সঙ্গী — TukTak24.Com</span></div></div>
 <header class="head"><div class="nav"><button class="menu-toggle" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" aria-label="ক্যাটাগরি">☰</button><div class="site-name" aria-label="TukTak24">TukTak24</div><div class="search"><span class="search-icon">⌕</span><input id="search" placeholder="আপনার পছন্দের পণ্য খুঁজুন…"><button onclick="render()">খুঁজুন</button></div><button class="top-cart-icon" onclick="showCart()" aria-label="কার্ট">🛒</button><div class="homepage-label" aria-label="Homepage">HOMEPAGE</div><button class="ghost reseller-nav-button" onclick="openResellerPage()">Reseller</button><button class="ghost admin-button" onclick="openLogin()">Admin</button></div></header>
-<div class="adminbar" id="adminbar">অ্যাডমিন মোড চালু <button class="primary" onclick="openDashboard()">📊 অর্ডার ড্যাশবোর্ড</button><button class="primary" onclick="openProduct()">＋ পণ্য যোগ</button><button class="ghost" onclick="openManage()">পণ্য পরিচালনা</button><button class="primary" onclick="openCustomerManager()">👥 কাস্টমারের তথ্য</button><button class="primary" onclick="openGiftCards()">গিফট কার্ডের হিসাব</button><button class="primary" onclick="openResellerManager()">রিসেলার আবেদন <span id="resellerPendingCount" class="pending-count"></span></button><button class="ghost" onclick="logout()">লগআউট</button></div>
+<section class="adminbar" id="adminbar"><div class="adminbar-heading"><span class="adminbar-kicker">TUKTAK24 · CONTROL CENTER</span><strong>অ্যাডমিন প্যানেল</strong><small>দোকানের সব কার্যক্রম এক জায়গা থেকে পরিচালনা করুন</small></div><div class="adminbar-actions"><button class="primary admin-dashboard-btn" onclick="openDashboard()"><span class="admin-action-icon">▦</span><span>অর্ডার ড্যাশবোর্ড</span><span class="admin-action-arrow">›</span></button><button class="primary" onclick="openProduct()"><span class="admin-action-icon">＋</span><span>পণ্য যোগ</span></button><button class="ghost" onclick="openManage()"><span class="admin-action-icon">▤</span><span>পণ্য পরিচালনা</span></button><button class="primary" onclick="openCustomerManager()"><span class="admin-action-icon">♙</span><span>কাস্টমারের তথ্য</span></button><button class="primary" onclick="openGiftCards()"><span class="admin-action-icon">▣</span><span>গিফট কার্ডের হিসাব</span></button><button class="primary" onclick="openResellerManager()"><span class="admin-action-icon">♧</span><span>রিসেলার আবেদন</span><span id="resellerPendingCount" class="pending-count"></span></button><button class="ghost admin-logout-btn" onclick="logout()"><span class="admin-action-icon">↪</span><span>লগআউট</span></button></div></section>
 <section class="hero"><div class="hero-copy"><span class="pill">✦ WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button><div class="delivery-promise">দেশের যেকোনো প্রান্তে ৭২ ঘণ্টার মধ্যে ক্যাশ অন ডেলিভারি</div></div><div class="hero-visual" aria-hidden="true"><div class="bag-handle"></div><div class="bag-body"><div class="bag-lines"></div></div><div class="gift gift-one">🎁</div><div class="gift gift-two">🎁</div><div class="sparkle">✦</div></div></section>
 <main><div class="section-title category-heading"><h2>ক্যাটাগরি</h2><a href="#products">সব দেখুন <span>→</span></a></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)"><span class="cat-icon" aria-hidden="true">🛍️</span> সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)"><span class="cat-icon" aria-hidden="true">🔌</span> ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)"><span class="cat-icon" aria-hidden="true">👕</span> ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)"><span class="cat-icon" aria-hidden="true">🏠</span> হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)"><span class="cat-icon" aria-hidden="true">✨</span> অন্যান্য</button></div>
 <div class="section-title" id="products"><h2>জনপ্রিয় পণ্য</h2><small id="productCount"></small></div><div class="grid" id="grid"></div>
