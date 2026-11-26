@@ -661,6 +661,52 @@ body.category-drawer-open{overflow:hidden}
   #grid .photo img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-width:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center!important}
 }
 
+
+/* Premium TukTak24 homepage finish: warm white, orange and charcoal */
+:root{--brand:#ff6500;--ink:#171717;--muted:#686868;--line:#e9e5e1;--bg:#fffaf6}
+body{background:linear-gradient(180deg,#fff 0%,#fffaf6 58%,#fff 100%)!important;color:#171717!important}
+.top{background:linear-gradient(100deg,#171717 0%,#242424 72%,#ff6500 100%)!important;border:0!important;border-bottom:3px solid #ff6500!important}
+.top-inner .top-sub-text{color:#ffe0cf!important}
+.head{background:#ffffffed!important;border-bottom:1px solid #f0e6df!important;box-shadow:0 7px 24px #26170d0c!important}
+.search{background:#fff!important;border:1px solid #e8ddd5!important;border-radius:16px!important}
+.search:focus-within{border-color:#ff6500!important;box-shadow:0 0 0 4px #ff650018!important}
+.search button,.primary,.actions .primary{background:linear-gradient(135deg,#ff7b24,#ed5200)!important;color:#fff!important;box-shadow:0 5px 14px #ed52002b!important}
+.search button:hover,.primary:hover{background:linear-gradient(135deg,#ff8a3c,#e94b00)!important;box-shadow:0 8px 20px #ed52003b!important}
+.ghost{background:#fff!important;color:#292929!important;border:1px solid #e7ddd6!important}
+.ghost:hover{background:#fff1e8!important;border-color:#ffb78e!important}
+.hero{background:linear-gradient(115deg,#fff8f1 0%,#fff1e5 54%,#ffd8bc 100%)!important;border:1px solid #f5d5c0!important;box-shadow:0 18px 42px #5b2a1014!important;border-radius:25px!important}
+.hero:before{background:radial-gradient(circle at 86% 20%,#ff650022,transparent 35%)!important}
+.hero h1,.hero h1 span{color:#171717!important}
+.hero h1 span{color:#f05a0a!important}
+.hero p{color:#62564e!important}
+.hero .pill{background:#fff!important;border:1px solid #ffd3b8!important;color:#d84d00!important}
+.hero .primary{background:linear-gradient(110deg,#ff7b24,#ed5200)!important;color:#fff!important}
+.delivery-promise{background:#fff!important;border-color:#ffd3b8!important;border-left-color:#ff6500!important;box-shadow:0 5px 15px #6b34100c!important}
+.section-title h2{color:#171717!important}
+.section-title h2:before{background:linear-gradient(180deg,#ff8a3d,#ed5200)!important}
+.category-heading{margin-top:34px!important;padding-top:22px!important;border-top:1px solid #f0e4dc!important}
+.category-heading a{color:#e95400!important;font-weight:800;text-decoration:none}
+.categories{display:flex!important;flex-wrap:wrap!important;gap:12px!important;padding:14px!important;background:linear-gradient(135deg,#fff8f2,#fff)!important;border:1px solid #f0e1d7!important;border-radius:18px!important;box-shadow:0 8px 24px #4a25100a!important}
+.cat{background:#fff!important;color:#34302d!important;border:1px solid #e8ddd5!important;border-radius:13px!important;min-height:52px!important;padding:10px 17px!important;box-shadow:0 3px 10px #4a251008!important}
+.cat:hover{background:#fff3ea!important;border-color:#ff9a60!important;color:#d94e00!important}
+.cat.active{background:linear-gradient(135deg,#ff7b24,#ed5200)!important;border-color:#ed5200!important;color:#fff!important;box-shadow:0 6px 15px #ed520033!important}
+.product{background:#fff!important;border:1px solid #eee5df!important;border-radius:18px!important;box-shadow:0 7px 22px #3b24120b!important}
+.product:hover{border-color:#ffc49e!important;box-shadow:0 15px 32px #3b241216!important}
+.photo{background:#f8f5f2!important}
+.pbody h3{color:#24201d!important}
+.price{color:#171717!important}
+.stock-label{color:#188047!important}
+.save{background:#fff1e8!important;color:#d94d00!important;border-color:#ffd7c2!important}
+.features .feature{background:#fff!important;border:1px solid #eee2d9!important;box-shadow:0 7px 20px #3b24120a!important;border-radius:16px!important}
+.footer{background:linear-gradient(110deg,#171717,#292522)!important;border-top:4px solid #ff6500!important}
+.adminbar{background:#fff7f1!important;border-color:#f2d9c8!important}
+@media(max-width:760px){
+ .hero{background:linear-gradient(145deg,#fff8f1,#ffe7d5)!important}
+ .categories{flex-wrap:wrap!important;gap:8px!important;padding:11px!important}
+ .cat{flex:1 1 calc(50% - 8px)!important;justify-content:center!important;font-size:13px!important;min-height:46px!important;padding:9px 10px!important}
+ .cat .cat-icon{width:24px!important;height:24px!important;font-size:18px!important}
+}
+
 </style>
 </head>
 <body>
@@ -680,8 +726,8 @@ body.category-drawer-open{overflow:hidden}
 </aside>
 <section class="adminbar" id="adminbar"><div class="adminbar-heading"><span class="adminbar-kicker">TUKTAK24 · CONTROL CENTER</span><strong>অ্যাডমিন প্যানেল</strong><small>দোকানের সব কার্যক্রম এক জায়গা থেকে পরিচালনা করুন</small></div><div class="adminbar-actions"><button class="primary admin-dashboard-btn" onclick="openDashboard()"><span class="admin-action-icon">▦</span><span>অর্ডার ড্যাশবোর্ড</span><span class="admin-action-arrow">›</span></button><button class="primary" onclick="openProduct()"><span class="admin-action-icon">＋</span><span>পণ্য যোগ</span></button><button class="ghost" onclick="openManage()"><span class="admin-action-icon">▤</span><span>পণ্য পরিচালনা</span></button><button class="primary" onclick="openCustomerManager()"><span class="admin-action-icon">♙</span><span>কাস্টমারের তথ্য</span></button><button class="primary" onclick="openGiftCards()"><span class="admin-action-icon">▣</span><span>গিফট কার্ডের হিসাব</span></button><button class="primary" onclick="openResellerManager()"><span class="admin-action-icon">♧</span><span>রিসেলার আবেদন</span><span id="resellerPendingCount" class="pending-count"></span></button><button class="ghost admin-logout-btn" onclick="logout()"><span class="admin-action-icon">↪</span><span>লগআউট</span></button></div></section>
 <section class="hero"><div class="hero-copy"><span class="pill">✦ WELCOME TO TUKTAK24</span><h1>পছন্দের সবকিছু<br><span>এক ঠিকানায়</span></h1><p>আপনার দৈনন্দিন পছন্দের পণ্য, গ্যাজেট ও প্রয়োজনীয় জিনিস—সহজে খুঁজুন, পছন্দ করুন এবং ঘরে বসেই অর্ডার করুন।</p><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></button><div class="delivery-promise">দেশের যেকোনো প্রান্তে ৭২ ঘণ্টার মধ্যে ক্যাশ অন ডেলিভারি</div></div><div class="hero-visual" aria-hidden="true"><div class="bag-handle"></div><div class="bag-body"><div class="bag-lines"></div></div><div class="gift gift-one">🎁</div><div class="gift gift-two">🎁</div><div class="sparkle">✦</div></div></section>
-<main><div class="section-title category-heading"><h2>ক্যাটাগরি</h2><a href="#products">সব দেখুন <span>→</span></a></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)"><span class="cat-icon" aria-hidden="true">🛍️</span> সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)"><span class="cat-icon" aria-hidden="true">🔌</span> ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)"><span class="cat-icon" aria-hidden="true">👕</span> ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)"><span class="cat-icon" aria-hidden="true">🏠</span> হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)"><span class="cat-icon" aria-hidden="true">✨</span> অন্যান্য</button></div>
-<div class="section-title" id="products"><h2>জনপ্রিয় পণ্য</h2><small id="productCount"></small></div><div class="grid" id="grid"></div>
+<main><div class="section-title" id="products"><h2>জনপ্রিয় পণ্য</h2><small id="productCount"></small></div><div class="grid" id="grid"></div>
+<div class="section-title category-heading"><h2>ক্যাটাগরি</h2><a href="#products">উপরে যান <span>↑</span></a></div><div class="categories" id="categories"><button class="cat active" onclick="setCategory('সব পণ্য',this)"><span class="cat-icon" aria-hidden="true">🛍️</span> সব পণ্য</button><button class="cat" onclick="setCategory('ইলেকট্রনিক্স',this)"><span class="cat-icon" aria-hidden="true">🔌</span> ইলেকট্রনিক্স</button><button class="cat" onclick="setCategory('ফ্যাশন',this)"><span class="cat-icon" aria-hidden="true">👕</span> ফ্যাশন</button><button class="cat" onclick="setCategory('হোম & লিভিং',this)"><span class="cat-icon" aria-hidden="true">🏠</span> হোম & লিভিং</button><button class="cat" onclick="setCategory('অন্যান্য',this)"><span class="cat-icon" aria-hidden="true">✨</span> অন্যান্য</button></div>
 <div class="features"><div class="feature">🚚<strong>ক্যাশ অন ডেলিভারি</strong><small>পণ্য হাতে পেয়ে মূল্য পরিশোধ করুন</small></div><a class="feature" href="https://wa.me/8801516598174?text=আসসালামু%20আলাইকুম%2C%20TukTak24%20থেকে%20অর্ডার%20করতে%20চাই।" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">💬<strong>WhatsApp অর্ডার</strong><small>সরাসরি কথা বলে অর্ডার করুন</small></a><a class="feature" href="https://wa.me/8801516598174?text=আসসালামু%20আলাইকুম%2C%20TukTak24%20সম্পর্কে%20জানতে%20চাই।" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">🔒<strong>বিশ্বস্ত কেনাকাটা</strong><small>সাপোর্টের জন্য আমাদের সাথে যোগাযোগ</small></a></div></main>
 <footer class="footer"><div class="footinner"><div><a class="logo" style="color:white" href="#">TukTak<b>24</b></a><p>পছন্দের সবকিছু এক ঠিকানায়।</p></div><div><strong>যোগাযোগ</strong><p>WhatsApp: 01516598174<br>Email: <a href="mailto:tuktal24.1@gmail.com" style="color:#fff;text-decoration:underline">tuktal24.1@gmail.com</a></p></div><div><strong>সাহায্য</strong><p>অর্ডার বা পণ্য সম্পর্কে জানতে<br>WhatsApp-এ মেসেজ দিন।</p></div></div><div class="developer-credit"><span>Developer</span><a href="https://www.facebook.com/share/1A9LPogEZY/" target="_blank" rel="noopener noreferrer">K.M.Sakib</a></div></footer>
 <div class="modal" id="loginModal"><div class="panel"><div class="rowbtn" style="justify-content:space-between"><h2>অ্যাডমিন লগইন</h2><button class="ghost" onclick="closeModal('loginModal')">✕</button></div><div class="field"><label>অ্যাডমিন ইমেইল</label><input id="username" type="email" placeholder="অ্যাডমিন ইমেইল লিখুন" autocomplete="username"></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password"></div><p class="notice" id="loginMsg">অনুমোদিত অ্যাডমিন লগইন করুন।</p><button class="primary" onclick="login()">লগইন</button></div></div>
