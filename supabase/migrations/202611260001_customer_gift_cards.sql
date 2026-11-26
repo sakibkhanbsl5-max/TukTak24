@@ -32,7 +32,7 @@ create table if not exists public.gift_cards (
   status text not null default 'unused' check (status in ('unused', 'used', 'disabled')),
   expires_at date,
   issued_at timestamptz not null default now(),
-  used_at timestamptz,
+  redeemed_at timestamptz,
   order_code text,
   admin_note text,
   created_by uuid references auth.users(id) on delete set null,
@@ -42,6 +42,7 @@ create table if not exists public.gift_cards (
 
 create index if not exists gift_cards_status_idx on public.gift_cards (status);
 create index if not exists gift_cards_customer_idx on public.gift_cards (customer_id);
+create unique index if not exists gift_cards_one_per_customer_idx on public.gift_cards (customer_id) where customer_id is not null;
 
 -- Existing order rows are retained. This source marker lets the admin distinguish
 -- website form orders from orders entered manually from WhatsApp.
@@ -62,20 +63,17 @@ begin
   if nullif(trim(new.customer_phone), '') is null then
     return new;
   end if;
-
   if jsonb_typeof(coalesce(new.items, '[]'::jsonb)) = 'array' then
     select coalesce(sum(greatest(0, coalesce((item->>'quantity')::integer, 0))), 0)
       into v_items
       from jsonb_array_elements(coalesce(new.items, '[]'::jsonb)) as item;
   end if;
-
   insert into public.customers (
     name, phone, division, district, upazila, address,
     first_order_at, last_order_at, order_count, total_items, lifetime_value
   ) values (
     coalesce(nullif(trim(new.customer_name), ''), 'Unknown'),
-    trim(new.customer_phone),
-    new.division, new.district, new.upazila, new.address,
+    trim(new.customer_phone), new.division, new.district, new.upazila, new.address,
     v_order_time, v_order_time, 1, v_items, coalesce(new.total, 0)
   )
   on conflict (phone) do update set
@@ -90,10 +88,34 @@ begin
     total_items = customers.total_items + excluded.total_items,
     lifetime_value = customers.lifetime_value + excluded.lifetime_value,
     updated_at = now();
-
   return new;
 end;
 $$;
+
+-- Backfill customers from all existing orders once, without overwriting any
+-- customer records that may already have been manually curated.
+with order_rollup as (
+  select
+    trim(customer_phone) as phone,
+    (array_agg(nullif(trim(customer_name), '') order by created_at desc))[1] as name,
+    (array_agg(division order by created_at desc))[1] as division,
+    (array_agg(district order by created_at desc))[1] as district,
+    (array_agg(upazila order by created_at desc))[1] as upazila,
+    (array_agg(address order by created_at desc))[1] as address,
+    min(created_at) as first_order_at,
+    max(created_at) as last_order_at,
+    count(*)::integer as order_count,
+    coalesce(sum((select coalesce(sum(greatest(0, coalesce((item->>'quantity')::integer, 0))),0)
+                  from jsonb_array_elements(coalesce(orders.items,'[]'::jsonb)) item)),0)::integer as total_items,
+    coalesce(sum(total),0)::numeric(12,2) as lifetime_value
+  from public.orders
+  where nullif(trim(customer_phone),'') is not null
+  group by trim(customer_phone)
+)
+insert into public.customers(name,phone,division,district,upazila,address,first_order_at,last_order_at,order_count,total_items,lifetime_value)
+select coalesce(name,'Unknown'),phone,division,district,upazila,address,first_order_at,last_order_at,order_count,total_items,lifetime_value
+from order_rollup
+on conflict(phone) do nothing;
 
 drop trigger if exists tuktak24_orders_customer_sync on public.orders;
 create trigger tuktak24_orders_customer_sync
@@ -114,32 +136,25 @@ as $$
 declare
   v_code text;
   v_id uuid;
-  i integer;
 begin
   if coalesce(auth.jwt()->>'email', '') <> 'tuktak24.1@gmail.com' then
     raise exception 'Admin access required';
   end if;
-  if p_count is null or p_count < 1 or p_count > 100 then
-    raise exception 'Count must be between 1 and 100';
-  end if;
+  if p_count <> 1 then raise exception 'One gift code per customer only'; end if;
   if p_discount is null or p_discount <= 0 or p_discount > 100 then
     raise exception 'Discount must be between 0 and 100';
   end if;
-  if p_customer_id is not null and not exists (
-    select 1 from public.customers c where c.id = p_customer_id
-  ) then
-    raise exception 'Customer not found';
+  if p_customer_id is null or not exists (select 1 from public.customers c where c.id = p_customer_id) then
+    raise exception 'Select a valid customer';
   end if;
-
-  for i in 1..p_count loop
-    v_code := 'TTG-' || upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 12));
-    insert into public.gift_cards(code, discount_percent, expires_at, customer_id, created_by)
-    values (v_code, p_discount, p_expires_at, p_customer_id, auth.uid())
-    returning gift_cards.id into v_id;
-    id := v_id;
-    code := v_code;
-    return next;
-  end loop;
+  if exists (select 1 from public.gift_cards g where g.customer_id = p_customer_id) then
+    raise exception 'This customer already has a gift card';
+  end if;
+  v_code := 'TTG-' || upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 12));
+  insert into public.gift_cards(code, discount_percent, expires_at, customer_id, created_by)
+  values (v_code, p_discount, p_expires_at, p_customer_id, auth.uid())
+  returning gift_cards.id into v_id;
+  return query select v_id, v_code;
 end;
 $$;
 
